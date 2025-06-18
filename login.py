@@ -2,6 +2,7 @@ import tkinter as tk
 from db import conectar
 from tkinter import messagebox
 
+
 def cadastrar_usuario(nome_entry, senha_entry):
     nome = nome_entry.get()
     senha = senha_entry.get()
@@ -16,6 +17,7 @@ def cadastrar_usuario(nome_entry, senha_entry):
         messagebox.showinfo("Info", "Usuário(a) cadastrado (a) com sucesso!")
         conn.commit()
         conn.close()
+
 
 def validar_usuario(nome_entry, senha_entry, root, tela_pesquisa):
     nome = nome_entry.get()
