@@ -17,7 +17,7 @@ def cadastrar_usuario(nome_entry, senha_entry):
         conn.commit()
         conn.close()
 
-def validar_usuario(nome_entry, senha_entry, root, tela_principal):
+def validar_usuario(nome_entry, senha_entry, root, tela_pesquisa):
     nome = nome_entry.get()
     senha = senha_entry.get()
     conn = conectar()
@@ -27,12 +27,13 @@ def validar_usuario(nome_entry, senha_entry, root, tela_principal):
     if user:
         messagebox.showinfo("Info", "Login efetuado com sucesso!")
         root.destroy()
-        tela_principal()        
+        tela_pesquisa()
+        
     else:
         messagebox.showwarning("Atenção", "Usuário (a) não cadastrado (a).")
         conn.close()
 
-def tela_login(tela_principal):
+def tela_login(tela_pesquisa):
     root = tk.Tk()
     root.title("Login")
     root.geometry("300x200")
@@ -46,5 +47,5 @@ def tela_login(tela_principal):
     senha_entry.pack()
 
     tk.Button(root, text="Cadastrar", command=lambda:cadastrar_usuario(nome_entry, senha_entry)).pack(pady=5)
-    tk.Button(root, text="Login", command=lambda:validar_usuario(nome_entry, senha_entry, root, tela_principal)).pack(pady=5)
+    tk.Button(root, text="Login", command=lambda:validar_usuario(nome_entry, senha_entry, root, tela_pesquisa)).pack(pady=5)
     root.mainloop()
